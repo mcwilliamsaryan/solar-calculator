@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import UserDetails from './UserDetails';
 import OwnPool from './OwnPool';
 import SquareFeet from './SquareFeet';
 import AcSystems from './AcSystems';
 import AvgElecBill from './AvgElecBill';
 import Estimate from './Estimate';
+import { SwitchTransition, CSSTransition } from 'react-transition-group';
+// import { Switch } from '@material-ui/core';
 
 export default class Calculate extends Component {
   state = {
@@ -34,6 +35,57 @@ export default class Calculate extends Component {
     const { step } = this.state;
     const { value } = this.state;
     const values = { value };
+
+    // return (
+    //   <SwitchTransition>
+    //     <CSSTransition
+    //       key={step}
+    //       addEndListener={(node, done) =>
+    //         node.addEventListener('transitionend', done, false)
+    //       }
+    //       classNames='fade'
+    //     >
+    //       {step === 1 && (
+    //         <SquareFeet
+    //           nextStep={this.nextStep}
+    //           handleChange={this.handleChange}
+    //           values={values}
+    //         />
+    //       )}
+    //       {step === 2 && (
+    //         <AvgElecBill
+    //           prevStep={this.prevStep}
+    //           nextStep={this.nextStep}
+    //           handleChange={this.handleChange}
+    //           values={values}
+    //         />
+    //       )}
+    //       {step === 3 && (
+    //         <OwnPool
+    //           prevStep={this.prevStep}
+    //           nextStep={this.nextStep}
+    //           handleChange={this.handleChange}
+    //           values={values}
+    //         />
+    //       )}
+    //       {step === 4 && (
+    //         <AcSystems
+    //           prevStep={this.prevStep}
+    //           nextStep={this.nextStep}
+    //           handleChange={this.handleChange}
+    //           values={values}
+    //         />
+    //       )}
+    //       {step === 5 && (
+    //         <Estimate
+    //           prevStep={this.prevStep}
+    //           nextStep={this.nextStep}
+    //           values={values}
+    //         />
+    //       )}
+    //     </CSSTransition>
+    //   </SwitchTransition>
+    // );
 
     switch (step) {
       case 1:
@@ -80,7 +132,6 @@ export default class Calculate extends Component {
           />
         );
       default:
-      // do nothing
     }
   }
 }

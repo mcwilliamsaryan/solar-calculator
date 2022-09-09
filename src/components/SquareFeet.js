@@ -7,16 +7,30 @@ const SquareFeet = ({ nextStep, handleChange, values }) => {
   };
 
   return (
-    <form>
-      <input
-        type='text'
-        placeholder='Enter Square Feet Here'
-        label='Square Feet'
-        onChange={handleChange}
-        defaultValue={values.sqaureFeet}
-      />
-      <button onClick={Continue}>Next</button>
-    </form>
+    <div class='d-flex justify-content-center align-items-center container'>
+      <div class='card py-5 px-3'>
+        <br />
+        <br />
+        <br />
+        <h2>How many square feet is your home?</h2>
+        <br />
+        <input
+          class='input'
+          type='text'
+          placeholder='Enter Here'
+          label='Square Feet'
+          onChange={handleChange}
+          defaultValue={values.sqaureFeet}
+        />
+        <br />
+        <br />
+        <div>
+          <button class='button-77' onClick={Continue} role='button'>
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -11,17 +11,33 @@ const AvgElecBill = ({ nextStep, prevStep, handleChange, values }) => {
   };
 
   return (
-    <form>
-      <input
-        type='text'
-        placeholder='Enter Electric Bill Here'
-        label='Average Electric Bill'
-        onChange={handleChange}
-        defaultValue={values.avgElecBill}
-      />
-      <button onClick={Continue}>Next</button>
-      <button onClick={Previous}>Previous</button>
-    </form>
+    <div class='d-flex justify-content-center align-items-center container'>
+      <div class='card py-5 px-3'>
+        <br />
+        <br />
+        <br />
+        <h2>What is your average electric bill?</h2>
+        <br />
+        <input
+          class='input'
+          type='text'
+          placeholder='Enter Here'
+          label='Square Feet'
+          onChange={handleChange}
+          defaultValue={values.sqaureFeet}
+        />
+        <br />
+        <br />
+        <div>
+          <button class='button-77' onClick={Continue} role='button'>
+            Continue
+          </button>
+          <button class='button-77' onClick={Previous} role='button'>
+            Go Back
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

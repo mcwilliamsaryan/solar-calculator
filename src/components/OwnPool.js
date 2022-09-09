@@ -1,11 +1,33 @@
 import React from 'react';
 
-const OwnPool = () => {
+const OwnPool = ({ nextStep, prevStep, handleChange, values }) => {
+  const Continue = (e) => {
+    e.preventDefault();
+    nextStep();
+  };
+  const Previous = (e) => {
+    e.preventDefault();
+    prevStep();
+  };
   return (
-    <div>
-      <h1>do you own a pool page</h1>
+    <div class='d-flex justify-content-center align-items-center container'>
+      <div class='card py-5 px-3'>
+        <br />
+        <br />
+        <br />
+        <h2>Do you own a pool?</h2>
+        <br />
+        <div>
+          <button id='yes' class='button-77' onClick={Continue} role='button'>
+            Yes
+          </button>
+          <button id='no' class='button-77' onClick={Continue} role='button'>
+            No
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default OwnPool
+export default OwnPool;
