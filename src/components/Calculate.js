@@ -46,7 +46,7 @@ export default class Calculate extends Component {
     let value = e.target.value;
     stateCopy[name] = value;
 
-    stateCopy["estimate"] = parseInt(stateCopy["squareFeet"]) + parseInt(stateCopy["avgElecBill"])
+    stateCopy["estimate"] = parseFloat(stateCopy["squareFeet"]) + parseFloat(stateCopy["avgElecBill"])
     this.setState(stateCopy);
   };
 
@@ -97,6 +97,7 @@ export default class Calculate extends Component {
             prevStep={this.prevStep}
             nextStep={this.nextStep}
             values={values}
+            estimate={this.state.estimate}
           />
         );
       case 6:
