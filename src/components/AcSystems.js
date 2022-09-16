@@ -22,8 +22,9 @@ const AcSystems = ({ nextStep, prevStep, handleChange, values }) => {
           class='input'
           type='text'
           placeholder='Enter Here'
+          name='acSystems'
           label='Square Feet'
-          onChange={handleChange}
+          onChange={handleChange("acSystems")}
           defaultValue={values.sqaureFeet}
         />
         <br />

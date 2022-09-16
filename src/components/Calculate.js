@@ -27,11 +27,18 @@ export default class Calculate extends Component {
     this.setState({ step: step + 1 });
   };
 
+  ownsPool = (e) => {
+    let stateCopy = this.state;
+    let name = e.target.name;
+    let buttonClicked = e.target.id;
+    stateCopy[name] = buttonClicked;
+    this.setState(stateCopy)
+  }
+
   // "input" is the argument, a string, that gets passed into the handleChange method that we're passing to the 
   // child component via props. It's a string that references a variable in state like "squareFeet". This lets
   // update just that key value pair in state. This lets us update state in the parent component from within the child component. 
   handleChange = (input) => (e) => {
-    this.setState({ [input]: e.target.value });
 
     let stateCopy = this.state;
     let name = e.target.name;
@@ -39,7 +46,7 @@ export default class Calculate extends Component {
     stateCopy[name] = value;
 
     stateCopy["estimate"] = parseInt(stateCopy["squareFeet"]) + parseInt(stateCopy["avgElecBill"])
-    this.setState(stateCopy)
+    this.setState(stateCopy);
   };
 
   render() {
@@ -70,6 +77,7 @@ export default class Calculate extends Component {
             prevStep={this.prevStep}
             nextStep={this.nextStep}
             handleChange={this.handleChange}
+            handleClick={this.ownsPool}
             values={values}
           />
         );
