@@ -20,10 +20,11 @@ const AvgElecBill = ({ nextStep, prevStep, handleChange, values }) => {
         <br />
         <input
           class='input'
-          type='text'
+          type='number'
+          name='avgElecBill'
           placeholder='Enter Here'
           label='Square Feet'
-          onChange={handleChange}
+          onChange={handleChange("avgElecBill")}
           defaultValue={values.sqaureFeet}
         />
         <br />
@@ -36,6 +37,8 @@ const AvgElecBill = ({ nextStep, prevStep, handleChange, values }) => {
             Go Back
           </button>
         </div>
+        <br />
+        <br />
       </div>
     </div>
   );

@@ -25,6 +25,8 @@ const OwnPool = ({ nextStep, prevStep, handleChange, values }) => {
             No
           </button>
         </div>
+        <br />
+        <br />
       </div>
     </div>
   );

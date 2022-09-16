@@ -16,11 +16,12 @@ const SquareFeet = ({ nextStep, handleChange, values }) => {
         <br />
         <input
           class='input'
-          type='text'
+          type='number'
+          name='squareFeet'
           placeholder='Enter Here'
           label='Square Feet'
-          onChange={handleChange}
-          defaultValue={values.sqaureFeet}
+          onChange={handleChange('squareFeet')} // need to update each other component so we pass the name of the relevant key in state
+          defaultValue={values.squareFeet}
         />
         <br />
         <br />
@@ -29,6 +30,8 @@ const SquareFeet = ({ nextStep, handleChange, values }) => {
             Continue
           </button>
         </div>
+        <br />
+        <br />
       </div>
     </div>
   );

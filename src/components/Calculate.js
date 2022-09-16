@@ -4,17 +4,19 @@ import SquareFeet from './SquareFeet';
 import AcSystems from './AcSystems';
 import AvgElecBill from './AvgElecBill';
 import Estimate from './Estimate';
+import ThankYou from './ThankYou';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 // import { Switch } from '@material-ui/core';
 
 export default class Calculate extends Component {
   state = {
     step: 1,
-    squareFeet: '',
-    avgElecBill: '',
+    squareFeet: 0,
+    avgElecBill: 0,
     ownPool: '',
     acSystems: '',
-    estimate: '',
+    estimate: 0,
+    thankYou: 0,
   };
 
   prevStep = () => {
@@ -29,71 +31,28 @@ export default class Calculate extends Component {
 
   handleChange = (input) => (e) => {
     this.setState({ [input]: e.target.value });
+
+    let stateCopy = this.state;
+    let name = e.target.name;
+    let value = e.target.value;
+    stateCopy[name] = value;
+
+    stateCopy['estimate'] =
+      parseInt(stateCopy['squareFeet']) + parseInt(stateCopy['avgElecBill']);
+    this.setState(stateCopy);
   };
 
   render() {
-    const { step } = this.state;
     const { value } = this.state;
     const values = { value };
 
-    // return (
-    //   <SwitchTransition>
-    //     <CSSTransition
-    //       key={step}
-    //       addEndListener={(node, done) =>
-    //         node.addEventListener('transitionend', done, false)
-    //       }
-    //       classNames='fade'
-    //     >
-    //       {step === 1 && (
-    //         <SquareFeet
-    //           nextStep={this.nextStep}
-    //           handleChange={this.handleChange}
-    //           values={values}
-    //         />
-    //       )}
-    //       {step === 2 && (
-    //         <AvgElecBill
-    //           prevStep={this.prevStep}
-    //           nextStep={this.nextStep}
-    //           handleChange={this.handleChange}
-    //           values={values}
-    //         />
-    //       )}
-    //       {step === 3 && (
-    //         <OwnPool
-    //           prevStep={this.prevStep}
-    //           nextStep={this.nextStep}
-    //           handleChange={this.handleChange}
-    //           values={values}
-    //         />
-    //       )}
-    //       {step === 4 && (
-    //         <AcSystems
-    //           prevStep={this.prevStep}
-    //           nextStep={this.nextStep}
-    //           handleChange={this.handleChange}
-    //           values={values}
-    //         />
-    //       )}
-    //       {step === 5 && (
-    //         <Estimate
-    //           prevStep={this.prevStep}
-    //           nextStep={this.nextStep}
-    //           values={values}
-    //         />
-    //       )}
-    //     </CSSTransition>
-    //   </SwitchTransition>
-    // );
-
-    switch (step) {
+    switch (this.state.step) {
       case 1:
         return (
           <SquareFeet
             nextStep={this.nextStep}
             handleChange={this.handleChange}
-            values={values}
+            values={this.state.squareFeet}
           />
         );
       case 2:
@@ -131,6 +90,8 @@ export default class Calculate extends Component {
             values={values}
           />
         );
+      case 6:
+        return <ThankYou values={values} />;
       default:
     }
   }
