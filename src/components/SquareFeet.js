@@ -20,7 +20,7 @@ const SquareFeet = ({ nextStep, handleChange, values }) => {
           name='squareFeet'
           placeholder='Enter Here'
           label='Square Feet'
-          onChange={handleChange('squareFeet')} // need to update each other component so we pass the name of the relevant key in state
+          onChange={handleChange("squareFeet")} // need to update each other component so we pass the name of the relevant key in state
           defaultValue={values.squareFeet}
         />
         <br />
