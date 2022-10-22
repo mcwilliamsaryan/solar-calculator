@@ -5,6 +5,7 @@ import SquareFeet from './SquareFeet';
 import AcSystems from './AcSystems';
 import AvgElecBill from './AvgElecBill';
 import Estimate from './Estimate';
+import { motion } from 'framer-motion';
 
 export default class Calculate extends Component {
   state = {
@@ -27,11 +28,30 @@ export default class Calculate extends Component {
   };
 
   handleChange = (input) => (e) => {
+<<<<<<< Updated upstream
     this.setState({ [input]: e.target.value });
   };
 
   render() {
     const { step } = this.state;
+=======
+    let stateCopy = this.state;
+    let name = e.target.name;
+    let value = e.target.value;
+    stateCopy[name] = value;
+    let total = Math.floor(Math.random() * 5);
+
+    stateCopy['estimate'] =
+      parseFloat(stateCopy['squareFeet']) +
+      parseFloat(stateCopy['avgElecBill']) *
+        parseFloat(stateCopy['acSystems']) *
+        total;
+
+    this.setState(stateCopy);
+  };
+
+  render() {
+>>>>>>> Stashed changes
     const { value } = this.state;
     const values = { value };
 
@@ -46,12 +66,14 @@ export default class Calculate extends Component {
         );
       case 2:
         return (
-          <AvgElecBill
-            prevStep={this.prevStep}
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
+          <>
+            <AvgElecBill
+              prevStep={this.prevStep}
+              nextStep={this.nextStep}
+              handleChange={this.handleChange}
+              values={values}
+            />
+          </>
         );
       case 3:
         return (
